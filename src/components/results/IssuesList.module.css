@@ -1,0 +1,81 @@
+.card {
+  padding: var(--space-5);
+  background: var(--color-surface);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-lg);
+}
+
+.title {
+  font-size: var(--font-size-md);
+  font-weight: 700;
+  color: var(--color-text);
+  margin-bottom: var(--space-3);
+}
+
+.empty {
+  font-size: var(--font-size-sm);
+  color: var(--color-text-faint);
+}
+
+.list {
+  display: flex;
+  flex-direction: column;
+}
+
+.row {
+  width: 100%;
+  min-height: var(--touch-target);
+  padding: var(--space-3) 0;
+  border-top: 1px solid var(--color-border);
+  display: flex;
+  align-items: flex-start;
+  gap: var(--space-2);
+  text-align: left;
+}
+
+.nonClickable {
+  cursor: default;
+}
+
+.severityBadge {
+  flex-shrink: 0;
+  margin-top: 2px;
+  padding: 2px var(--space-2);
+  border-radius: 999px;
+  font-size: var(--font-size-xs);
+  font-weight: 700;
+}
+
+.severity-critical {
+  background: var(--severity-critical-bg);
+  color: var(--severity-critical-text);
+}
+
+.severity-major {
+  background: var(--severity-major-bg);
+  color: var(--severity-major-text);
+}
+
+.severity-minor {
+  background: var(--severity-minor-bg);
+  color: var(--severity-minor-text);
+}
+
+.textCol {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-1);
+}
+
+.text {
+  font-size: var(--font-size-md);
+  color: var(--color-text);
+  line-height: 1.45;
+}
+
+.memo {
+  font-size: var(--font-size-sm);
+  color: var(--color-text-muted);
+  padding-left: var(--space-3);
+  border-left: 2px solid var(--color-border-strong);
+}

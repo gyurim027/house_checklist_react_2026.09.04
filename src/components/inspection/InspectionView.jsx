@@ -3,6 +3,7 @@ import { VisitInfoCard } from '../property/VisitInfoCard.jsx';
 import { ProgressBar } from '../progress/ProgressBar.jsx';
 import { ChecklistSection } from '../checklist/ChecklistSection.jsx';
 import { RealtorQuestions } from '../questions/RealtorQuestions.jsx';
+import { ResultsSection } from '../results/ResultsSection.jsx';
 import { SaveBar } from '../save/SaveBar.jsx';
 import styles from './InspectionView.module.css';
 
@@ -17,6 +18,8 @@ export function InspectionView() {
       <ProgressBar />
       <ChecklistSection />
       <RealtorQuestions />
+      {/* Task 7(FinalDecision)이 ResultsSection과 SaveBar 사이에 삽입될 예정. */}
+      <ResultsSection />
       <SaveBar />
     </div>
   );

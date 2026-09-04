@@ -1,0 +1,38 @@
+.prompt {
+  padding: var(--space-5);
+  background: var(--color-surface);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-lg);
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-2);
+}
+
+.title {
+  font-size: var(--font-size-md);
+  font-weight: 700;
+  color: var(--color-text);
+}
+
+.detail {
+  font-size: var(--font-size-sm);
+  color: var(--color-text-muted);
+}
+
+.hint {
+  font-size: var(--font-size-xs);
+  color: var(--color-text-faint);
+  margin-bottom: var(--space-2);
+}
+
+.showBtn {
+  align-self: flex-start;
+  min-height: var(--touch-target);
+  padding: 0 var(--space-4);
+  border-radius: var(--radius-md);
+  border: 1px solid var(--color-border-strong);
+  background: var(--color-surface);
+  color: var(--color-text);
+  font-size: var(--font-size-sm);
+  font-weight: 600;
+}

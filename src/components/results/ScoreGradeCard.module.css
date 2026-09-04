@@ -1,0 +1,58 @@
+.card {
+  padding: var(--space-5);
+  background: var(--color-surface);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-lg);
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-3);
+}
+
+.badge {
+  align-self: flex-start;
+  display: inline-flex;
+  align-items: baseline;
+  gap: var(--space-2);
+  padding: var(--space-2) var(--space-4);
+  border-radius: var(--radius-md);
+  background: var(--grade-color);
+}
+
+.score {
+  font-size: var(--font-size-2xl);
+  font-weight: 800;
+  color: var(--color-text-on-dark);
+}
+
+.dot {
+  color: var(--color-text-on-dark);
+  opacity: 0.7;
+}
+
+.gradeLabel {
+  font-size: var(--font-size-lg);
+  font-weight: 700;
+  color: var(--color-text-on-dark);
+}
+
+.disclaimer {
+  font-size: var(--font-size-xs);
+  color: var(--color-text-faint);
+}
+
+.guidance {
+  font-size: var(--font-size-md);
+  font-weight: 600;
+  color: var(--grade-color);
+}
+
+.scope {
+  font-size: var(--font-size-xs);
+  color: var(--color-text-muted);
+  line-height: 1.5;
+}
+
+.rateLine {
+  font-size: var(--font-size-xs);
+  color: var(--color-text-muted);
+}
