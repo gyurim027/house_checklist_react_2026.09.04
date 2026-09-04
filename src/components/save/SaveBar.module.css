@@ -2,53 +2,18 @@
   position: sticky;
   bottom: 0;
   display: flex;
-  flex-wrap: wrap;
   align-items: center;
-  justify-content: space-between;
+  justify-content: flex-end;
   gap: var(--space-3);
   padding: var(--space-3) var(--space-5);
   background: var(--color-surface);
   border-top: 1px solid var(--color-border);
 }
 
-.summary {
-  display: flex;
-  flex-direction: column;
-  gap: 2px;
-}
-
-.completionLine {
-  font-size: var(--font-size-xs);
-  color: var(--color-text-muted);
-}
-
-.scoreLine {
-  font-size: var(--font-size-xs);
-  font-weight: 700;
-  color: var(--color-text);
-}
-
-.actions {
-  display: flex;
-  align-items: center;
-  gap: var(--space-3);
-}
-
 .status {
   font-size: var(--font-size-xs);
   color: var(--color-text-muted);
   min-height: 1em;
-}
-
-.copyBtn {
-  min-height: var(--touch-target);
-  padding: 0 var(--space-5);
-  border-radius: var(--radius-md);
-  background: var(--color-surface);
-  border: 1px solid var(--color-border);
-  color: var(--color-text);
-  font-size: var(--font-size-sm);
-  font-weight: 700;
 }
 
 .saveBtn {
