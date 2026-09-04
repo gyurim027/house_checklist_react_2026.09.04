@@ -115,6 +115,14 @@ export const NOISE_LEVELS = [
   { id: 'unlivable', label: '거주하기 어려운 수준' }
 ];
 
+// ---------- 거래 유형 ----------
+
+export const DEAL_TYPES = [
+  { id: 'jeonse', label: '전세' },
+  { id: 'wolse', label: '월세' },
+  { id: 'maemae', label: '매매' },
+];
+
 // ---------- 중개사에게 물어볼 것 (8개, 확인율·점수 계산 제외) ----------
 
 export const QUESTIONS = [
