@@ -2,6 +2,7 @@ import { AddressCard } from '../property/AddressCard.jsx';
 import { VisitInfoCard } from '../property/VisitInfoCard.jsx';
 import { ProgressBar } from '../progress/ProgressBar.jsx';
 import { ChecklistSection } from '../checklist/ChecklistSection.jsx';
+import { RealtorQuestions } from '../questions/RealtorQuestions.jsx';
 import { SaveBar } from '../save/SaveBar.jsx';
 import styles from './InspectionView.module.css';
 
@@ -15,6 +16,7 @@ export function InspectionView() {
       <VisitInfoCard />
       <ProgressBar />
       <ChecklistSection />
+      <RealtorQuestions />
       <SaveBar />
     </div>
   );
