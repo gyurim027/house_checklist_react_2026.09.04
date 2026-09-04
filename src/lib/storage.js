@@ -59,7 +59,12 @@ export function buildInspectionRecord(overrides) {
       grade: null,
       issueCount: { critical: 0, major: 0, minor: 0 },
     },
-    ui: { expandedCategories: ['A_exterior_common'], optionalExpanded: [], resultRevealed: false },
+    ui: {
+      expandedCategories: ['A_exterior_common'],
+      optionalExpanded: [],
+      resultRevealed: false,
+      onboardingComplete: false,
+    },
     createdAt: now,
     updatedAt: now,
   };

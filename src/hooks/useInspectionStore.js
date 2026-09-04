@@ -336,6 +336,12 @@ export function useInspectionStore() {
     updateCurrentInspection((insp) => ({ ...insp, ui: { ...insp.ui, resultRevealed: true } }));
   }, [updateCurrentInspection]);
 
+  // ---------- 온보딩 ----------
+
+  const completeOnboarding = useCallback(() => {
+    updateCurrentInspection((insp) => ({ ...insp, ui: { ...insp.ui, onboardingComplete: true } }));
+  }, [updateCurrentInspection]);
+
   const expandCategoriesWithUnansweredItems = useCallback(
     (categoryIds) => {
       updateCurrentInspection((insp) => {
@@ -374,5 +380,6 @@ export function useInspectionStore() {
     setDecisionSummary,
     revealResults,
     expandCategoriesWithUnansweredItems,
+    completeOnboarding,
   };
 }
