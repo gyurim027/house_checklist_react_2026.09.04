@@ -36,7 +36,8 @@ export function buildInspectionRecord(overrides) {
     visit: {
       date: todayDateString(),
       time: '',
-      realtor: '',
+      realtorName: '',
+      realtorContact: '',
       dealType: '',
       jeonseAmount: '',
       maemaeAmount: '',
