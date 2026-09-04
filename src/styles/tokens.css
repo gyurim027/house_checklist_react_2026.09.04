@@ -6,22 +6,23 @@
    - 좋음(great) = 옅은 파랑(초록 절대 금지)
    - 해당없음(na) = 텍스트만 흐리게, 배경 없음
    - 등급 배지(치명/중요/참고)는 미흡일 때만 채도, 그 외 회색
-   - 결과 점수·등급만 초록/노랑/주황/빨강 4색(이 Task에서는 미사용, 향후 Task용으로 미리 정의)
-   실제 색상값/타이포그래피는 이 Task의 합리적 기본값이며, 최종 비주얼은 Task 9(frontend-design)에서 다듬는다. */
+   - 결과 점수·등급만 초록/노랑/주황/빨강 4색 — ScoreGradeCard.module.css/.jsx 외 사용 금지
+   Task 13(비주얼 디자인 폴리시): "현장 조사관의 클립보드" 컨셉 — 따뜻한 종이 배경 + 웜그레이 잉크
+   그레이스케일 + 잉크 블랙 액센트. 결과 등급 4색만 이 앱에서 유일하게 채도가 높다. */
 
 :root {
-  /* ---------- 무채색 팔레트 ---------- */
+  /* ---------- 무채색 팔레트(웜 그레이) ---------- */
   --gray-0: #ffffff;
-  --gray-50: #f8f8f9;
-  --gray-100: #f0f0f2;
-  --gray-200: #e2e2e6;
-  --gray-300: #cbccd1;
-  --gray-400: #a1a3ac;
-  --gray-500: #797c87;
-  --gray-600: #5b5e68;
-  --gray-700: #41434c;
-  --gray-800: #2a2b32;
-  --gray-900: #17181c;
+  --gray-50: #f7f5f0;
+  --gray-100: #f0ece4;
+  --gray-200: #e3ded3;
+  --gray-300: #ccc4b4;
+  --gray-400: #8f8676;
+  --gray-500: #786f5e;
+  --gray-600: #5b5346;
+  --gray-700: #423c31;
+  --gray-800: #2c2721;
+  --gray-900: #201c17;
 
   /* ---------- 표면/텍스트 ---------- */
   --color-bg: var(--gray-50);
@@ -35,18 +36,18 @@
   --color-text-on-dark: var(--gray-0);
 
   /* ---------- 항목 상태 색 ---------- */
-  --status-poor-bg: #fbeae9;
-  --status-poor-bar: #c94f43;
-  --status-poor-text: #9a352b;
-  --status-poor-border: #f0c9c5;
+  --status-poor-bg: #fbeae6;
+  --status-poor-bar: #a6503d;
+  --status-poor-text: #7a3324;
+  --status-poor-border: #e7beb0;
 
   --status-fine-bg: var(--gray-100);
   --status-fine-text: var(--gray-700);
   --status-fine-border: var(--gray-300);
 
-  --status-great-bg: #e7f0fb;
-  --status-great-text: #2e5c92;
-  --status-great-border: #c7dcf3;
+  --status-great-bg: #e6f0fa;
+  --status-great-text: #2c5c8c;
+  --status-great-border: #beddf0;
 
   --status-na-text: var(--gray-400);
 
@@ -58,22 +59,24 @@
   --severity-neutral-bg: var(--gray-100);
   --severity-neutral-text: var(--gray-500);
 
-  --severity-critical-bg: #f5cfcb;
-  --severity-critical-text: #8a2f24;
-  --severity-major-bg: #f4ddc2;
-  --severity-major-text: #855a1a;
-  --severity-minor-bg: #e3e6ea;
-  --severity-minor-text: #4c5560;
+  --severity-critical-bg: #f3cbc0;
+  --severity-critical-text: #7c2c1d;
+  --severity-major-bg: #f2dcb8;
+  --severity-major-text: #7a5312;
+  --severity-minor-bg: #e6e1d5;
+  --severity-minor-text: #5c5346;
 
-  /* ---------- 결과 등급용 4색(향후 Task, 여기서는 정의만) ---------- */
-  --grade-green: #2f9660;
-  --grade-yellow: #c9a227;
-  --grade-orange: #d1782f;
-  --grade-red: #c8493c;
+  /* ---------- 결과 등급용 4색 — ScoreGradeCard 전용 ---------- */
+  --grade-green: #1d7a44;
+  --grade-yellow: #8f6a0a;
+  --grade-orange: #b3541d;
+  --grade-red: #c23b2c;
 
   /* ---------- 강조(포커스/버튼) — 무채색 기조 유지 ---------- */
   --accent: var(--gray-900);
   --accent-text: var(--gray-0);
+  --accent-hover: #332d24;
+  --accent-pressed: #15120e;
   --focus-ring: #3b82f6;
 
   /* ---------- 타이포그래피 ---------- */
@@ -85,6 +88,7 @@
   --font-size-lg: 17px;
   --font-size-xl: 20px;
   --font-size-2xl: 24px;
+  --font-size-3xl: 40px;
   --line-height-base: 1.5;
 
   /* ---------- 여백/간격 ---------- */
@@ -98,10 +102,12 @@
   --space-8: 40px;
 
   /* ---------- 반경/그림자 ---------- */
-  --radius-sm: 6px;
-  --radius-md: 10px;
-  --radius-lg: 14px;
-  --shadow-card: 0 1px 2px rgba(23, 24, 28, 0.06), 0 1px 8px rgba(23, 24, 28, 0.04);
+  --radius-sm: 8px;
+  --radius-md: 12px;
+  --radius-lg: 18px;
+  --radius-xl: 22px;
+  --shadow-card: 0 1px 2px rgba(32, 28, 23, 0.07), 0 2px 10px rgba(32, 28, 23, 0.05);
+  --shadow-card-elevated: 0 10px 28px rgba(32, 28, 23, 0.14), 0 2px 8px rgba(32, 28, 23, 0.08);
 
   /* ---------- 레이아웃 ---------- */
   --content-max-width: 720px;

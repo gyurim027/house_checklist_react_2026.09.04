@@ -4,6 +4,7 @@ import { AddressCard } from '../property/AddressCard.jsx';
 import { VisitScheduleFields } from '../property/VisitScheduleFields.jsx';
 import { PropertyTermsFields } from '../property/PropertyTermsFields.jsx';
 import { RealtorFields } from '../property/RealtorFields.jsx';
+import { cx } from '../../lib/classNames.js';
 import styles from './SetupWizard.module.css';
 
 // 방문 일정 요약 줄(단계 2가 접혔을 때 보여줄 텍스트). 방문시간이 아직 없으면 방문일만 표시.
@@ -27,14 +28,14 @@ function GatedStepHeader({ number, title, gatePassed, expanded, summary, onToggl
   if (!gatePassed) {
     return (
       <div className={styles.header}>
-        <span className={styles.stepBadge}>{number}</span>
+        <span className={cx(styles.stepBadge, expanded && styles.stepBadgeActive)}>{number}</span>
         <span className={styles.stepTitle}>{title}</span>
       </div>
     );
   }
   return (
     <button type="button" className={styles.header} aria-expanded={expanded} onClick={onToggle}>
-      <span className={styles.stepBadge}>{number}</span>
+      <span className={cx(styles.stepBadge, expanded && styles.stepBadgeActive)}>{number}</span>
       <span className={styles.stepTitle}>{title}</span>
       {!expanded && summary && <span className={styles.stepSummary}>{summary}</span>}
     </button>

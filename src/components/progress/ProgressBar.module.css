@@ -15,7 +15,7 @@
   background: var(--color-surface);
   border-bottom: 1px solid var(--color-border);
   border-radius: 0 0 var(--radius-lg) var(--radius-lg);
-  box-shadow: 0 2px 8px rgb(0 0 0 / 8%);
+  box-shadow: var(--shadow-card);
   opacity: 0;
   transform: translateY(-6px);
   transition: opacity 0.2s ease, transform 0.2s ease;
@@ -43,7 +43,7 @@
 
 .fill {
   height: 100%;
-  background: var(--gray-600);
+  background: var(--gray-700);
   border-radius: inherit;
   transition: width 0.2s ease;
 }

@@ -40,16 +40,16 @@
   font-size: var(--font-size-lg);
 }
 
-/* 가운데 선택 밴드(위/아래 테두리로 강조) — 클릭/스크롤을 가로채지 않는다. */
+/* 가운데 선택 밴드(알약형 채움 배지) — 클릭/스크롤을 가로채지 않는다. */
 .centerBand {
   position: absolute;
   top: 50%;
-  left: 0;
-  right: 0;
+  left: var(--space-1);
+  right: var(--space-1);
   height: 44px;
   transform: translateY(-50%);
-  border-top: 1px solid var(--color-border-strong);
-  border-bottom: 1px solid var(--color-border-strong);
+  background: var(--gray-100);
+  border-radius: var(--radius-sm);
   pointer-events: none;
 }
 

@@ -8,7 +8,13 @@
 }
 
 .line {
-  font-size: var(--font-size-lg);
+  font-size: var(--font-size-md);
+  color: var(--color-text-muted);
+}
+
+.line:first-of-type {
+  font-size: var(--font-size-xl);
+  font-weight: 700;
   color: var(--color-text);
 }
 

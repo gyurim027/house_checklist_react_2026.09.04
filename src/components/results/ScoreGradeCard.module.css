@@ -1,32 +1,36 @@
 .card {
-  padding: var(--space-5);
+  padding: var(--space-6);
   background: var(--color-surface);
   border: 1px solid var(--color-border);
-  border-radius: var(--radius-lg);
+  border-top: 4px solid var(--grade-color);
+  border-radius: var(--radius-xl);
+  box-shadow: var(--shadow-card-elevated);
   display: flex;
   flex-direction: column;
   gap: var(--space-3);
 }
 
 .badge {
-  align-self: flex-start;
+  align-self: stretch;
   display: inline-flex;
   align-items: baseline;
   gap: var(--space-2);
-  padding: var(--space-2) var(--space-4);
+  padding: var(--space-4) var(--space-5);
   border-radius: var(--radius-md);
   background: var(--grade-color);
 }
 
 .score {
-  font-size: var(--font-size-2xl);
+  font-size: var(--font-size-3xl);
   font-weight: 800;
+  letter-spacing: -0.02em;
+  font-variant-numeric: tabular-nums;
   color: var(--color-text-on-dark);
 }
 
 .dot {
   color: var(--color-text-on-dark);
-  opacity: 0.7;
+  opacity: 0.6;
 }
 
 .gradeLabel {
@@ -41,8 +45,8 @@
 }
 
 .guidance {
-  font-size: var(--font-size-md);
-  font-weight: 600;
+  font-size: var(--font-size-lg);
+  font-weight: 700;
   color: var(--grade-color);
 }
 
