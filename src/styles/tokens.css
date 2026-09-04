@@ -1,0 +1,109 @@
+/* 「집 보러 갈 때 10분 체크」 디자인 토큰
+   기획서 §9.2 색상 사용 규칙(계획 파일 Global Constraints)을 코드화한다.
+   - 확인율 바 / 카테고리 응답 수 / 미응답 항목 = 무채색만
+   - 미흡(poor) = 경고색 배경 + 좌측 세로 바
+   - 양호(fine) = 옅은 중립 톤(강조 없음)
+   - 좋음(great) = 옅은 파랑(초록 절대 금지)
+   - 해당없음(na) = 텍스트만 흐리게, 배경 없음
+   - 등급 배지(치명/중요/참고)는 미흡일 때만 채도, 그 외 회색
+   - 결과 점수·등급만 초록/노랑/주황/빨강 4색(이 Task에서는 미사용, 향후 Task용으로 미리 정의)
+   실제 색상값/타이포그래피는 이 Task의 합리적 기본값이며, 최종 비주얼은 Task 9(frontend-design)에서 다듬는다. */
+
+:root {
+  /* ---------- 무채색 팔레트 ---------- */
+  --gray-0: #ffffff;
+  --gray-50: #f8f8f9;
+  --gray-100: #f0f0f2;
+  --gray-200: #e2e2e6;
+  --gray-300: #cbccd1;
+  --gray-400: #a1a3ac;
+  --gray-500: #797c87;
+  --gray-600: #5b5e68;
+  --gray-700: #41434c;
+  --gray-800: #2a2b32;
+  --gray-900: #17181c;
+
+  /* ---------- 표면/텍스트 ---------- */
+  --color-bg: var(--gray-50);
+  --color-surface: var(--gray-0);
+  --color-surface-alt: var(--gray-100);
+  --color-border: var(--gray-200);
+  --color-border-strong: var(--gray-300);
+  --color-text: var(--gray-800);
+  --color-text-muted: var(--gray-600);
+  --color-text-faint: var(--gray-400);
+  --color-text-on-dark: var(--gray-0);
+
+  /* ---------- 항목 상태 색 ---------- */
+  --status-poor-bg: #fbeae9;
+  --status-poor-bar: #c94f43;
+  --status-poor-text: #9a352b;
+  --status-poor-border: #f0c9c5;
+
+  --status-fine-bg: var(--gray-100);
+  --status-fine-text: var(--gray-700);
+  --status-fine-border: var(--gray-300);
+
+  --status-great-bg: #e7f0fb;
+  --status-great-text: #2e5c92;
+  --status-great-border: #c7dcf3;
+
+  --status-na-text: var(--gray-400);
+
+  --status-unanswered-bg: var(--gray-0);
+  --status-unanswered-text: var(--gray-600);
+  --status-unanswered-border: var(--gray-300);
+
+  /* ---------- 등급 배지(치명/중요/참고) ---------- */
+  --severity-neutral-bg: var(--gray-100);
+  --severity-neutral-text: var(--gray-500);
+
+  --severity-critical-bg: #f5cfcb;
+  --severity-critical-text: #8a2f24;
+  --severity-major-bg: #f4ddc2;
+  --severity-major-text: #855a1a;
+  --severity-minor-bg: #e3e6ea;
+  --severity-minor-text: #4c5560;
+
+  /* ---------- 결과 등급용 4색(향후 Task, 여기서는 정의만) ---------- */
+  --grade-green: #2f9660;
+  --grade-yellow: #c9a227;
+  --grade-orange: #d1782f;
+  --grade-red: #c8493c;
+
+  /* ---------- 강조(포커스/버튼) — 무채색 기조 유지 ---------- */
+  --accent: var(--gray-900);
+  --accent-text: var(--gray-0);
+  --focus-ring: #3b82f6;
+
+  /* ---------- 타이포그래피 ---------- */
+  --font-sans:
+    -apple-system, BlinkMacSystemFont, 'Pretendard', 'Segoe UI', Roboto, 'Malgun Gothic', sans-serif;
+  --font-size-xs: 12px;
+  --font-size-sm: 13px;
+  --font-size-md: 15px;
+  --font-size-lg: 17px;
+  --font-size-xl: 20px;
+  --font-size-2xl: 24px;
+  --line-height-base: 1.5;
+
+  /* ---------- 여백/간격 ---------- */
+  --space-1: 4px;
+  --space-2: 8px;
+  --space-3: 12px;
+  --space-4: 16px;
+  --space-5: 20px;
+  --space-6: 24px;
+  --space-7: 32px;
+  --space-8: 40px;
+
+  /* ---------- 반경/그림자 ---------- */
+  --radius-sm: 6px;
+  --radius-md: 10px;
+  --radius-lg: 14px;
+  --shadow-card: 0 1px 2px rgba(23, 24, 28, 0.06), 0 1px 8px rgba(23, 24, 28, 0.04);
+
+  /* ---------- 레이아웃 ---------- */
+  --content-max-width: 720px;
+  --touch-target: 44px;
+}

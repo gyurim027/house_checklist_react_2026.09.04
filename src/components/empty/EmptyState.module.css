@@ -1,0 +1,24 @@
+.empty {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: var(--space-2);
+  text-align: center;
+  padding: var(--space-8) var(--space-5);
+}
+
+.line {
+  font-size: var(--font-size-lg);
+  color: var(--color-text);
+}
+
+.cta {
+  margin-top: var(--space-6);
+  min-height: var(--touch-target);
+  padding: 0 var(--space-6);
+  border-radius: var(--radius-md);
+  background: var(--accent);
+  color: var(--accent-text);
+  font-size: var(--font-size-md);
+  font-weight: 700;
+}

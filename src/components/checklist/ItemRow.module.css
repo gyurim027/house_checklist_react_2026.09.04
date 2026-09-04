@@ -1,0 +1,139 @@
+.row {
+  padding: var(--space-4) 0;
+  border-top: 1px solid var(--color-border);
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-3);
+}
+
+.top {
+  display: flex;
+}
+
+.textCol {
+  display: flex;
+  align-items: flex-start;
+  gap: var(--space-2);
+}
+
+.severityBadge {
+  flex-shrink: 0;
+  margin-top: 2px;
+  padding: 2px var(--space-2);
+  border-radius: 999px;
+  font-size: var(--font-size-xs);
+  font-weight: 700;
+  background: var(--severity-neutral-bg);
+  color: var(--severity-neutral-text);
+}
+
+.severityNeutral {
+  background: var(--severity-neutral-bg);
+  color: var(--severity-neutral-text);
+}
+
+.severity-critical {
+  background: var(--severity-critical-bg);
+  color: var(--severity-critical-text);
+}
+
+.severity-major {
+  background: var(--severity-major-bg);
+  color: var(--severity-major-text);
+}
+
+.severity-minor {
+  background: var(--severity-minor-bg);
+  color: var(--severity-minor-text);
+}
+
+.text {
+  font-size: var(--font-size-md);
+  color: var(--color-text);
+  line-height: 1.45;
+}
+
+.controls {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--space-2);
+  flex-wrap: wrap;
+}
+
+.statusButtons {
+  display: flex;
+  gap: var(--space-2);
+  flex-wrap: wrap;
+}
+
+.statusBtn {
+  min-height: var(--touch-target);
+  min-width: var(--touch-target);
+  padding: 0 var(--space-3);
+  border-radius: var(--radius-sm);
+  border: 1px solid var(--status-unanswered-border);
+  background: var(--status-unanswered-bg);
+  color: var(--status-unanswered-text);
+  font-size: var(--font-size-sm);
+  font-weight: 600;
+}
+
+.poorBtn.active {
+  background: var(--status-poor-bg);
+  color: var(--status-poor-text);
+  border-color: var(--status-poor-border);
+  border-left: 4px solid var(--status-poor-bar);
+}
+
+.fineBtn.active {
+  background: var(--status-fine-bg);
+  color: var(--status-fine-text);
+  border-color: var(--status-fine-border);
+}
+
+.greatBtn.active {
+  background: var(--status-great-bg);
+  color: var(--status-great-text);
+  border-color: var(--status-great-border);
+}
+
+.naBtn {
+  color: var(--status-na-text);
+}
+
+.naBtn.active {
+  background: var(--color-surface);
+  color: var(--status-na-text);
+  border-style: dashed;
+}
+
+.memoToggle {
+  min-height: var(--touch-target);
+  padding: 0 var(--space-2);
+  font-size: var(--font-size-xs);
+  color: var(--color-text-muted);
+  font-weight: 600;
+}
+
+.memoField {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-1);
+}
+
+.memoLabel {
+  font-size: var(--font-size-xs);
+  font-weight: 600;
+  color: var(--status-poor-text);
+}
+
+.memoInput {
+  border: 1px solid var(--color-border-strong);
+  border-radius: var(--radius-sm);
+  padding: var(--space-2) var(--space-3);
+  font-size: var(--font-size-sm);
+  font-family: inherit;
+  color: var(--color-text);
+  background: var(--color-surface);
+}

@@ -50,11 +50,20 @@ export function UiFeedbackProvider({ children }) {
     setConfirmModal((prev) => ({ ...prev, open: false, onConfirm: null }));
   }, []);
 
+  // onConfirm은 항상 최신 confirmModal을 가리키는 ref에서 읽어 호출한다. setConfirmModal의
+  // 업데이터 함수 안에서 onConfirm(다른 컴포넌트, 예: InspectionStoreProvider의 상태 설정
+  // 함수를 호출할 수 있음)을 실행하면 React가 "Cannot update a component while rendering a
+  // different component" 오류를 낸다(렌더 단계에서 실행될 수 있는 업데이터는 순수해야 함) —
+  // 그래서 onConfirm 호출은 업데이터 밖, 이벤트 핸들러 본문에서 한 번만 수행한다.
+  const confirmModalRef = useRef(confirmModal);
+  useEffect(() => {
+    confirmModalRef.current = confirmModal;
+  }, [confirmModal]);
+
   const confirmModalConfirm = useCallback(() => {
-    setConfirmModal((prev) => {
-      if (prev.onConfirm) prev.onConfirm();
-      return { ...prev, open: false, onConfirm: null };
-    });
+    const onConfirm = confirmModalRef.current.onConfirm;
+    setConfirmModal((prev) => ({ ...prev, open: false, onConfirm: null }));
+    if (onConfirm) onConfirm();
   }, []);
 
   const value = {

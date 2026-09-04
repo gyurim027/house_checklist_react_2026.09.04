@@ -1,0 +1,61 @@
+.item {
+  display: flex;
+  align-items: stretch;
+  gap: var(--space-2);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-md);
+  background: var(--color-surface);
+  overflow: hidden;
+}
+
+.current {
+  border-color: var(--color-border-strong);
+  background: var(--color-surface-alt);
+}
+
+.main {
+  flex: 1;
+  min-width: 0;
+  text-align: left;
+  padding: var(--space-3) var(--space-4);
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+.name {
+  font-size: var(--font-size-md);
+  font-weight: 600;
+  color: var(--color-text);
+  display: flex;
+  align-items: baseline;
+  gap: var(--space-2);
+}
+
+.score {
+  font-size: var(--font-size-xs);
+  font-weight: 500;
+  color: var(--color-text-muted);
+}
+
+.address {
+  font-size: var(--font-size-sm);
+  color: var(--color-text-muted);
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.meta {
+  font-size: var(--font-size-xs);
+  color: var(--color-text-faint);
+}
+
+.deleteBtn {
+  flex-shrink: 0;
+  min-width: var(--touch-target);
+  padding: 0 var(--space-3);
+  font-size: var(--font-size-xs);
+  color: var(--status-poor-text);
+  border-left: 1px solid var(--color-border);
+}
