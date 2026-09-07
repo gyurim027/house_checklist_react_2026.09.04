@@ -54,3 +54,10 @@
   background: var(--status-poor-bar);
   color: var(--color-text-on-dark);
 }
+
+/* 삭제처럼 되돌릴 수 없는 동작이 아닌 확인(예: "저장하고 홈으로")에 쓰는 톤 —
+   빨강 대신 기존 accent(검정) 채움. */
+.confirmBtnNeutral {
+  background: var(--accent);
+  color: var(--accent-text);
+}

@@ -1,0 +1,93 @@
+.section {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-3);
+}
+
+.heading {
+  font-size: var(--font-size-lg);
+  font-weight: 700;
+  color: var(--color-text);
+}
+
+.empty {
+  font-size: var(--font-size-sm);
+  color: var(--color-text-muted);
+}
+
+.empty a {
+  color: var(--color-text);
+  font-weight: 600;
+  text-decoration: underline;
+}
+
+.scrollWrapper {
+  overflow-x: auto;
+  -webkit-overflow-scrolling: touch;
+}
+
+.table {
+  border-collapse: collapse;
+  min-width: max-content;
+  width: 100%;
+}
+
+.labelCell {
+  padding: var(--space-2) var(--space-3);
+  text-align: left;
+  font-size: var(--font-size-sm);
+  font-weight: 600;
+  color: var(--color-text);
+  white-space: nowrap;
+}
+
+.headCell {
+  padding: var(--space-2) var(--space-3);
+  text-align: left;
+  font-size: var(--font-size-sm);
+  font-weight: 700;
+  color: var(--color-text);
+  white-space: nowrap;
+  border-bottom: 1px solid var(--color-border);
+}
+
+.cell {
+  padding: var(--space-2) var(--space-3);
+  border-top: 1px solid var(--color-border);
+}
+
+.chip {
+  display: inline-block;
+  padding: 2px var(--space-3);
+  border-radius: var(--radius-full);
+  font-size: var(--font-size-xs);
+  font-weight: 700;
+  white-space: nowrap;
+}
+
+.satisfied {
+  background: var(--status-great-bg);
+  color: var(--status-great-text);
+}
+
+.issues {
+  background: var(--status-poor-bg);
+  color: var(--status-poor-text);
+}
+
+.unconfirmed {
+  background: var(--status-unanswered-bg);
+  color: var(--status-unanswered-text);
+  border: 1px solid var(--status-unanswered-border);
+}
+
+.summaryRow {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+.summaryLine {
+  font-size: var(--font-size-xs);
+  color: var(--color-text-muted);
+}

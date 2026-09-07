@@ -1,4 +1,5 @@
 import { useUiFeedback } from '../../context/UiFeedbackContext.jsx';
+import { cx } from '../../lib/classNames.js';
 import styles from './ConfirmModal.module.css';
 
 // UiFeedbackContext의 confirmModal 상태를 구독해 실제로 그리는 컴포넌트.
@@ -20,7 +21,11 @@ export function ConfirmModal() {
           <button type="button" className={styles.cancelBtn} onClick={confirmModalCancel}>
             취소
           </button>
-          <button type="button" className={styles.confirmBtn} onClick={confirmModalConfirm}>
+          <button
+            type="button"
+            className={cx(styles.confirmBtn, confirmModal.tone === 'neutral' && styles.confirmBtnNeutral)}
+            onClick={confirmModalConfirm}
+          >
             {confirmModal.confirmLabel}
           </button>
         </div>

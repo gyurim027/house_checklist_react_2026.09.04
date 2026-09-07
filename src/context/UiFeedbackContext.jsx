@@ -13,6 +13,7 @@ export function UiFeedbackProvider({ children }) {
     open: false,
     message: '',
     confirmLabel: '확인',
+    tone: 'danger',
     onConfirm: null,
   });
 
@@ -42,6 +43,10 @@ export function UiFeedbackProvider({ children }) {
       open: true,
       message,
       confirmLabel: options.confirmLabel || '확인',
+      // 'danger'(빨강, 기본값)는 삭제 등 되돌릴 수 없는 동작용. 'neutral'은 "저장하고
+      // 홈으로"처럼 위험하지 않은 확인 동작에 쓴다(ConfirmModal.jsx가 이 값으로 버튼
+      // 색을 가른다).
+      tone: options.tone || 'danger',
       onConfirm: onConfirm || null,
     });
   }, []);

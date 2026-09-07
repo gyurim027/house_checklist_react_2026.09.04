@@ -1,8 +1,7 @@
 import { useNavigate } from 'react-router-dom';
 import { useInspection } from '../../context/InspectionStoreContext.jsx';
 import { useUiFeedback } from '../../context/UiFeedbackContext.jsx';
-import { calcCompletionRate } from '../../lib/scoring.js';
-import { todayDateString } from '../../lib/id.js';
+import { deriveInspectionDisplay } from '../../lib/inspectionDisplay.js';
 import { cx } from '../../lib/classNames.js';
 import { onboardingStepRoute } from '../../pages/onboarding/onboardingRoutes.js';
 import styles from './SavedInspectionListItem.module.css';
@@ -13,11 +12,7 @@ export function SavedInspectionListItem({ inspection, index }) {
   const { showConfirm } = useUiFeedback();
   const navigate = useNavigate();
 
-  const name = inspection.alias || `${inspection.visit.date || todayDateString()} · ${index + 1}번째`;
-  const addressLine = (inspection.property.addressText || '').split('\n')[0] || '(주소 미입력)';
-  const { rate } = calcCompletionRate(inspection);
-  const scoreLabel =
-    inspection.cache.score != null && rate >= 60 ? `${inspection.cache.score}점` : '점검 중';
+  const { name, addressLine, rate, scoreLabel } = deriveInspectionDisplay(inspection, index);
   const isCurrent = currentInspection?.id === inspection.id;
   const isDraft = !inspection.ui.onboardingComplete;
 

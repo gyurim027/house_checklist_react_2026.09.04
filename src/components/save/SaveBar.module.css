@@ -5,11 +5,28 @@
   bottom: var(--nav-height);
   display: flex;
   align-items: center;
-  justify-content: flex-end;
+  justify-content: space-between;
   gap: var(--space-3);
   padding: var(--space-3) var(--space-5);
   background: var(--color-surface);
   border-top: 1px solid var(--color-border);
+}
+
+.homeBtn {
+  min-height: var(--touch-target);
+  padding: 0 var(--space-4);
+  border-radius: var(--radius-full);
+  border: 1px solid var(--color-border-strong);
+  background: var(--color-surface);
+  color: var(--color-text);
+  font-size: var(--font-size-sm);
+  font-weight: 700;
+}
+
+.saveGroup {
+  display: flex;
+  align-items: center;
+  gap: var(--space-3);
 }
 
 .status {

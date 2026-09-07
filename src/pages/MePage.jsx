@@ -2,8 +2,9 @@ import { Link } from 'react-router-dom';
 import styles from './MePage.module.css';
 
 // PA-MYP-01 — 마이. 이 태스크의 범위는 최소로: "내 기준 설정"(선호 조건 수정)
-// 진입 카드 하나만 둔다. 프로필/설정 등 다른 항목은 이후 태스크가 필요해지면
-// 추가한다(브리프 명시 — 범위 확장 금지).
+// 진입 카드 하나만 둔다. Gemini API 키는 사용자 화면에 노출하지 않고 빌드 시점
+// 환경변수로만 관리한다(geminiKeyStore.js) — 프로필/설정 등 다른 항목은 이후
+// 태스크가 필요해지면 추가한다.
 export function MePage() {
   return (
     <div className={styles.page}>

@@ -16,6 +16,11 @@
   scrollbar-width: none;
   -ms-overflow-style: none;
   text-align: center;
+  /* .centerBand/.fadeTop/.fadeBottom은 absolute라 position 없는(static) 요소보다
+     항상 위 레이어에 그려진다 — position+z-index로 명시적으로 항목 텍스트를 그
+     위에 올려서, 하이라이트 밴드가 "오전/오후"·숫자 텍스트를 가리는 버그를 고친다. */
+  position: relative;
+  z-index: 1;
 }
 
 .column::-webkit-scrollbar {
@@ -51,6 +56,7 @@
   background: var(--gray-100);
   border-radius: var(--radius-sm);
   pointer-events: none;
+  z-index: 0;
 }
 
 .fadeTop,
@@ -60,6 +66,7 @@
   right: 0;
   height: 88px; /* 2 * --touch-target */
   pointer-events: none;
+  z-index: 0;
 }
 
 .fadeTop {

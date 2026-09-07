@@ -28,3 +28,8 @@ dist-ssr
 
 # Worktrees for subagent-driven development
 .worktrees/
+
+# Env files (Gemini API 키 등 비밀값) — 절대 커밋하지 않는다
+.env
+.env.*
+!.env.example

@@ -1,15 +1,7 @@
 import { useInspection } from '../../context/InspectionStoreContext.jsx';
 import { calcScore, calcGrade, calcCompletionRate } from '../../lib/scoring.js';
+import { GRADE_COLOR_VAR } from '../../lib/gradeColor.js';
 import styles from './ScoreGradeCard.module.css';
-
-// 등급 4색(초록/노랑/주황/빨강)은 앱 전체에서 이 컴포넌트에서만 사용한다(계획 Global Constraints).
-// "좋음" 상태의 옅은 파랑과 절대 혼동되지 않도록, calcGrade가 반환하는 color를 그대로만 사용한다.
-const GRADE_COLOR_VAR = {
-  green: 'var(--grade-green)',
-  yellow: 'var(--grade-yellow)',
-  orange: 'var(--grade-orange)',
-  red: 'var(--grade-red)',
-};
 
 export function ScoreGradeCard() {
   const { currentInspection } = useInspection();
