@@ -2,19 +2,19 @@ import { Navigate, useNavigate } from 'react-router-dom';
 import { useInspection } from '../../context/InspectionStoreContext.jsx';
 import { RealtorFields } from '../../components/property/RealtorFields.jsx';
 import { OnboardingStepLayout } from './OnboardingStepLayout.jsx';
-import { onboardingStepRoute } from './onboardingRoutes.js';
+import { useOnboardingStepGuard } from './useOnboardingStepGuard.js';
 
 // PA-IFO-04 — 온보딩 4/4단계: 중개사 정보.
-// 순차 가드: ui.onboardingStep < 4면 현재 진행된 단계로 되돌린다.
+// 순차 가드(useOnboardingStepGuard): draft 없음/이미 완료됨/ui.onboardingStep < 4 중
+// 하나라도 해당하면 적절한 라우트로 되돌린다.
 // 별도의 5단계 라우트는 없다 — "기본 정보 입력 완료" 클릭 시 completeOnboarding()을 호출하고
 // 곧바로 체크리스트 화면(/checklist/:id)으로 이동한다.
 export function RealtorStep() {
-  const { currentInspection, completeOnboarding } = useInspection();
+  const { redirectTo, currentInspection } = useOnboardingStepGuard(4);
+  const { completeOnboarding } = useInspection();
   const navigate = useNavigate();
 
-  if (!currentInspection || currentInspection.ui.onboardingStep < 4) {
-    return <Navigate to={onboardingStepRoute(currentInspection?.ui.onboardingStep)} replace />;
-  }
+  if (redirectTo) return <Navigate to={redirectTo} replace />;
 
   const handleComplete = () => {
     const id = currentInspection.id;

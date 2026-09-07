@@ -2,17 +2,18 @@ import { Navigate, useNavigate } from 'react-router-dom';
 import { useInspection } from '../../context/InspectionStoreContext.jsx';
 import { PropertyTermsFields } from '../../components/property/PropertyTermsFields.jsx';
 import { OnboardingStepLayout } from './OnboardingStepLayout.jsx';
-import { onboardingStepRoute } from './onboardingRoutes.js';
+import { useOnboardingStepGuard } from './useOnboardingStepGuard.js';
 
 // PA-IFO-03 — 온보딩 3/4단계: 매물 조건 및 관리비.
-// 순차 가드: ui.onboardingStep < 3면 현재 진행된 단계로 되돌린다.
+// 순차 가드(useOnboardingStepGuard): draft 없음/이미 완료됨/ui.onboardingStep < 3 중
+// 하나라도 해당하면 적절한 라우트(각각 /new/basic, 완료된 레코드의 /checklist/:id,
+// 현재 진행된 단계)로 되돌린다.
 export function TermsStep() {
-  const { currentInspection, setOnboardingStep } = useInspection();
+  const { redirectTo } = useOnboardingStepGuard(3);
+  const { setOnboardingStep } = useInspection();
   const navigate = useNavigate();
 
-  if (!currentInspection || currentInspection.ui.onboardingStep < 3) {
-    return <Navigate to={onboardingStepRoute(currentInspection?.ui.onboardingStep)} replace />;
-  }
+  if (redirectTo) return <Navigate to={redirectTo} replace />;
 
   const handleNext = () => {
     setOnboardingStep(4);
