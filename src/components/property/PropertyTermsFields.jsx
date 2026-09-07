@@ -1,3 +1,4 @@
+import { useState } from 'react';
 import { useInspection } from '../../context/InspectionStoreContext.jsx';
 import { DEAL_TYPES } from '../../data/checklistData.js';
 import { cx } from '../../lib/classNames.js';
@@ -26,6 +27,41 @@ function AmountField({ label, value, onChange }) {
         <span className={styles.unit}>만원</span>
       </div>
       {helper && <span className={styles.helperText}>{helper}</span>}
+    </label>
+  );
+}
+
+// 면적(평) 숫자 입력. 선택 입력 — 비어 있으면 null로 저장한다(visit.areaPyeong: number | null).
+// 소수점(예: 24.5평) 입력 도중 값이 잘리지 않도록 표시용 로컬 버퍼(text)를 두고,
+// FinalDecision의 summaryInput과 동일한 패턴으로 debounce 저장한다.
+function AreaField({ value, onChange }) {
+  const [text, setText] = useState(value === null || value === undefined ? '' : String(value));
+
+  const handleChange = (raw) => {
+    const sanitized = raw.replace(/[^0-9.]/g, '');
+    setText(sanitized);
+    if (sanitized === '' || sanitized === '.') {
+      onChange(null);
+      return;
+    }
+    const parsed = Number(sanitized);
+    onChange(Number.isNaN(parsed) ? null : parsed);
+  };
+
+  return (
+    <label className={styles.field}>
+      <span className={styles.label}>면적 (평)</span>
+      <div className={styles.amountInputWrap}>
+        <input
+          type="text"
+          inputMode="decimal"
+          className={styles.amountInput}
+          placeholder="선택 입력"
+          value={text}
+          onChange={(event) => handleChange(event.target.value)}
+        />
+        <span className={styles.unit}>평</span>
+      </div>
     </label>
   );
 }
@@ -82,6 +118,11 @@ export function PropertyTermsFields() {
           ))}
         </div>
       </div>
+
+      <AreaField
+        value={visit.areaPyeong}
+        onChange={(value) => updateVisitField('areaPyeong', value)}
+      />
 
       {visit.dealType === 'jeonse' && (
         <AmountField

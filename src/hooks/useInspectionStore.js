@@ -265,10 +265,10 @@ export function useInspectionStore() {
   // ---------- 중개사에게 물어볼 것 ----------
 
   const setQuestionAnswer = useCallback(
-    (questionId, text) => {
+    (questionId, text, { immediate } = {}) => {
       updateCurrentInspection(
         (insp) => ({ ...insp, questions: { ...insp.questions, [questionId]: text } }),
-        { immediate: false }
+        { immediate: !!immediate }
       );
     },
     [updateCurrentInspection]

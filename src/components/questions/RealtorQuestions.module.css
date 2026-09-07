@@ -45,3 +45,27 @@
   background: var(--color-surface);
   color: var(--color-text);
 }
+
+.segmentRow {
+  display: flex;
+  gap: var(--space-2);
+  flex-wrap: wrap;
+}
+
+.segmentBtn {
+  min-height: var(--touch-target);
+  min-width: var(--touch-target);
+  padding: 0 var(--space-4);
+  border-radius: var(--radius-sm);
+  border: 1px solid var(--status-unanswered-border);
+  background: var(--status-unanswered-bg);
+  color: var(--status-unanswered-text);
+  font-size: var(--font-size-sm);
+  font-weight: 600;
+}
+
+.segmentBtn.active {
+  background: var(--status-fine-bg);
+  color: var(--status-fine-text);
+  border-color: var(--status-fine-border);
+}

@@ -123,14 +123,24 @@ export const DEAL_TYPES = [
   { id: 'maemae', label: '매매' },
 ];
 
+// ---------- 반려동물 질문(q_pet) 3지선다 ----------
+
+export const PET_OPTIONS = [
+  { id: 'yes', label: '가능' },
+  { id: 'no', label: '불가' },
+  { id: 'unknown', label: '문의 안 함' },
+];
+
 // ---------- 중개사에게 물어볼 것 (8개, 확인율·점수 계산 제외) ----------
+// q_pet만 type: 'enum'(PET_OPTIONS 중 하나, 값은 'yes'|'no'|'unknown'|null) —
+// 나머지 7개는 type 없이 기존과 동일한 자유텍스트.
 
 export const QUESTIONS = [
   { id: 'q_internet', text: '인터넷 회선이 들어와 있나요? 어느 통신사인가요?' },
   { id: 'q_management_fee', text: '관리비에 무엇이 포함되나요? (수도/난방/인터넷/청소비)' },
   { id: 'q_repair_history', text: '최근 도배·장판·보일러·전기 설비 수리나 교체 이력이 있나요?' },
   { id: 'q_parking_fee', text: '주차는 세대당 몇 대이고 비용은 얼마인가요?' },
-  { id: 'q_pet', text: '반려동물을 키울 수 있나요?' },
+  { id: 'q_pet', text: '반려동물을 키울 수 있나요?', type: 'enum', options: PET_OPTIONS },
   { id: 'q_move_in', text: '입주 가능일이 언제인가요?' },
   { id: 'q_trash_rule', text: '음식물·일반 쓰레기는 언제 어디에 배출하나요?' },
   { id: 'q_etc', text: '그 밖에 물어본 것' }

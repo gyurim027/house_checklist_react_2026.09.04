@@ -20,7 +20,8 @@ export function buildEmptyCategoryMemos() {
 export function buildEmptyQuestions() {
   const questions = {};
   QUESTIONS.forEach((q) => {
-    questions[q.id] = '';
+    // enum형 질문(q_pet)의 "미답변"은 null — 나머지 자유텍스트 질문은 기존처럼 ''.
+    questions[q.id] = q.type === 'enum' ? null : '';
   });
   return questions;
 }
@@ -46,6 +47,7 @@ export function buildInspectionRecord(overrides) {
       wolseRent: '',
       managementFeeType: '',
       managementFeeAmount: '',
+      areaPyeong: null,
     },
     items: {},
     noiseLevel: '',
