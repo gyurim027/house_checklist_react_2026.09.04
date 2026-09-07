@@ -7,22 +7,25 @@
    - 해당없음(na) = 텍스트만 흐리게, 배경 없음
    - 등급 배지(치명/중요/참고)는 미흡일 때만 채도, 그 외 회색
    - 결과 점수·등급만 초록/노랑/주황/빨강 4색 — ScoreGradeCard.module.css/.jsx 외 사용 금지
-   Task 13(비주얼 디자인 폴리시): "현장 조사관의 클립보드" 컨셉 — 따뜻한 종이 배경 + 웜그레이 잉크
-   그레이스케일 + 잉크 블랙 액센트. 결과 등급 4색만 이 앱에서 유일하게 채도가 높다. */
+   Task 15 재작업(리터럴 적용, task-15-literal-design-spec.md): Cohere 디자인 시스템 문서
+   (04_house_checklist/design_references/design.md)의 실제 hex/px 값을 그대로 옮긴다 — 구조만
+   차용했던 이전 패스를 대체. Canvas White 배경 + Soft Stone 카드 alt + Ink 텍스트 + Near-Black
+   Primary 액센트 + Coral/Error Red/Action Blue 상태색. 결과 등급 4색(--grade-*)만 명시적 예외로
+   값 변경 없이 유지(기획서 §9.2/§4.3 legibility 요구사항). */
 
 :root {
-  /* ---------- 무채색 팔레트(웜 그레이) ---------- */
-  --gray-0: #ffffff;
-  --gray-50: #f7f5f0;
-  --gray-100: #f0ece4;
-  --gray-200: #e3ded3;
-  --gray-300: #ccc4b4;
-  --gray-400: #8f8676;
-  --gray-500: #786f5e;
-  --gray-600: #5b5346;
-  --gray-700: #423c31;
-  --gray-800: #2c2721;
-  --gray-900: #201c17;
+  /* ---------- 무채색 팔레트 — Cohere 리터럴 앵커 + 보간(중간값) ---------- */
+  --gray-0: #ffffff; /* 리터럴: Canvas White */
+  --gray-50: #ffffff; /* 리터럴: Canvas White (--color-bg가 참조 — 페이지 배경도 순백) */
+  --gray-100: #eeece7; /* 리터럴: Soft Stone */
+  --gray-200: #e5e7eb; /* 리터럴: Border Light */
+  --gray-300: #d9d9dd; /* 리터럴: Hairline */
+  --gray-400: #93939f; /* 리터럴: Muted Slate */
+  --gray-500: #848494; /* 보간: Muted Slate↔Slate 중간값 */
+  --gray-600: #75758a; /* 리터럴: Slate */
+  --gray-700: #4b4b56; /* 보간: Slate↔Ink 중간값 */
+  --gray-800: #212121; /* 리터럴: Ink */
+  --gray-900: #17171c; /* 리터럴: Near-Black Primary */
 
   /* ---------- 표면/텍스트 ---------- */
   --color-bg: var(--gray-50);
@@ -35,19 +38,19 @@
   --color-text-faint: var(--gray-400);
   --color-text-on-dark: var(--gray-0);
 
-  /* ---------- 항목 상태 색 ---------- */
-  --status-poor-bg: #fbeae6;
-  --status-poor-bar: #a6503d;
-  --status-poor-text: #7a3324;
-  --status-poor-border: #e7beb0;
+  /* ---------- 항목 상태 색 (리터럴: Coral 계열 워시 + Error Red) ---------- */
+  --status-poor-bg: #ffebe6; /* 보간: Coral 15% + 흰색 85% (Pale Blue Wash와 동일 방법론) */
+  --status-poor-bar: #b30000; /* 리터럴: Error Red (ConfirmModal 위험 버튼 배경 재사용) */
+  --status-poor-text: #b30000; /* 리터럴: Error Red */
+  --status-poor-border: #ffad9b; /* 리터럴: Soft Coral */
 
   --status-fine-bg: var(--gray-100);
   --status-fine-text: var(--gray-700);
   --status-fine-border: var(--gray-300);
 
-  --status-great-bg: #e6f0fa;
-  --status-great-text: #2c5c8c;
-  --status-great-border: #beddf0;
+  --status-great-bg: #f1f5ff; /* 리터럴: Pale Blue Wash */
+  --status-great-text: #1863dc; /* 리터럴: Action Blue */
+  --status-great-border: #4c6ee6; /* 리터럴: Focus Blue (재사용) */
 
   --status-na-text: var(--gray-400);
 
@@ -55,16 +58,17 @@
   --status-unanswered-text: var(--gray-600);
   --status-unanswered-border: var(--gray-300);
 
-  /* ---------- 등급 배지(치명/중요/참고) ---------- */
+  /* ---------- 등급 배지(치명/중요/참고) — design.md blog-filter-chip 스펙("coral fill with
+     dark text") 리터럴 적용 ---------- */
   --severity-neutral-bg: var(--gray-100);
   --severity-neutral-text: var(--gray-500);
 
-  --severity-critical-bg: #f3cbc0;
-  --severity-critical-text: #7c2c1d;
-  --severity-major-bg: #f2dcb8;
-  --severity-major-text: #7a5312;
-  --severity-minor-bg: #e6e1d5;
-  --severity-minor-text: #5c5346;
+  --severity-critical-bg: #b30000; /* 리터럴: Error Red, 채움 */
+  --severity-critical-text: var(--color-text-on-dark);
+  --severity-major-bg: #ff7759; /* 리터럴: Coral, 채움 */
+  --severity-major-text: var(--gray-800); /* Ink — blog-filter-chip "dark text" */
+  --severity-minor-bg: var(--gray-100);
+  --severity-minor-text: var(--gray-600);
 
   /* ---------- 결과 등급용 4색 — ScoreGradeCard 전용 ---------- */
   --grade-green: #1d7a44;
@@ -72,27 +76,27 @@
   --grade-orange: #b3541d;
   --grade-red: #c23b2c;
 
-  /* ---------- 강조(포커스/버튼) — 무채색 기조 유지 ---------- */
+  /* ---------- 강조(포커스/버튼) — Near-Black Primary 리터럴 ---------- */
   --accent: var(--gray-900);
   --accent-text: var(--gray-0);
-  --accent-hover: #332d24;
-  --accent-pressed: #15120e;
-  --focus-ring: #3b82f6;
+  --accent-hover: #3a3a3e; /* 보간: Near-Black Primary + 흰색 15% */
+  --accent-pressed: #000000; /* 리터럴: Cohere Black */
+  --focus-ring: #4c6ee6; /* 리터럴: Focus Blue */
 
-  /* ---------- 타이포그래피 ---------- */
+  /* ---------- 타이포그래피 — Cohere 실제 정의 세트(12/14/16/18/24/32/48/60/72/96)로 스냅 ---------- */
   --font-sans:
     -apple-system, BlinkMacSystemFont, 'Pretendard', 'Segoe UI', Roboto, 'Malgun Gothic', sans-serif;
   --font-size-xs: 12px;
-  --font-size-sm: 13px;
-  --font-size-md: 15px;
-  --font-size-lg: 17px;
-  --font-size-xl: 20px;
-  --font-size-2xl: 24px;
-  --font-size-3xl: 40px;
+  --font-size-sm: 14px;
+  --font-size-md: 16px;
+  --font-size-lg: 18px;
+  --font-size-xl: 24px;
+  --font-size-2xl: 32px;
+  --font-size-3xl: 48px;
   --line-height-base: 1.5;
 
-  /* ---------- 여백/간격 ---------- */
-  --space-1: 4px;
+  /* ---------- 여백/간격 — Cohere 목록(2/6/8/10/12/16/20/22/24/28/32/36/40/56/60/64/80) ---------- */
+  --space-1: 6px;
   --space-2: 8px;
   --space-3: 12px;
   --space-4: 16px;
@@ -116,8 +120,9 @@
   --radius-lg: 22px;
   --radius-xl: 30px;
   --radius-full: 999px;
-  --shadow-card: 0 1px 2px rgba(32, 28, 23, 0.07), 0 2px 10px rgba(32, 28, 23, 0.05);
-  --shadow-card-elevated: 0 10px 28px rgba(32, 28, 23, 0.14), 0 2px 8px rgba(32, 28, 23, 0.08);
+  /* rgba 베이스를 새 잉크값(--gray-900 #17171c = rgb(23,23,28))에 맞춰 갱신, 알파는 변경 없음 */
+  --shadow-card: 0 1px 2px rgba(23, 23, 28, 0.07), 0 2px 10px rgba(23, 23, 28, 0.05);
+  --shadow-card-elevated: 0 10px 28px rgba(23, 23, 28, 0.14), 0 2px 8px rgba(23, 23, 28, 0.08);
 
   /* ---------- 레이아웃 ---------- */
   --content-max-width: 720px;
