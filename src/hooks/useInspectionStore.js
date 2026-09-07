@@ -342,6 +342,19 @@ export function useInspectionStore() {
     updateCurrentInspection((insp) => ({ ...insp, ui: { ...insp.ui, onboardingComplete: true } }));
   }, [updateCurrentInspection]);
 
+  // 온보딩 진행 단계(1~4) — 상향식 high-water mark. step이 현재 저장된 값보다 클 때만
+  // 갱신한다(뒤로 가서 이전 단계를 다시 통과해도 절대 감소하지 않는다).
+  const setOnboardingStep = useCallback(
+    (step) => {
+      updateCurrentInspection((insp) => {
+        const next = Math.max(insp.ui.onboardingStep, step);
+        if (next === insp.ui.onboardingStep) return insp; // no-op
+        return { ...insp, ui: { ...insp.ui, onboardingStep: next } };
+      });
+    },
+    [updateCurrentInspection]
+  );
+
   const expandCategoriesWithUnansweredItems = useCallback(
     (categoryIds) => {
       updateCurrentInspection((insp) => {
@@ -381,5 +394,6 @@ export function useInspectionStore() {
     revealResults,
     expandCategoriesWithUnansweredItems,
     completeOnboarding,
+    setOnboardingStep,
   };
 }

@@ -1,14 +1,17 @@
+import { useNavigate } from 'react-router-dom';
 import { useInspection } from '../../context/InspectionStoreContext.jsx';
 import { useUiFeedback } from '../../context/UiFeedbackContext.jsx';
 import { calcCompletionRate } from '../../lib/scoring.js';
 import { todayDateString } from '../../lib/id.js';
 import { cx } from '../../lib/classNames.js';
+import { onboardingStepRoute } from '../../pages/onboarding/onboardingRoutes.js';
 import styles from './SavedInspectionListItem.module.css';
 
 // props: inspection, index(정렬된 목록에서의 0-based 순번, alias 없을 때 "N번째"로 표시)
 export function SavedInspectionListItem({ inspection, index }) {
   const { currentInspection, loadInspection, deleteInspection } = useInspection();
   const { showConfirm } = useUiFeedback();
+  const navigate = useNavigate();
 
   const name = inspection.alias || `${inspection.visit.date || todayDateString()} · ${index + 1}번째`;
   const addressLine = (inspection.property.addressText || '').split('\n')[0] || '(주소 미입력)';
@@ -16,6 +19,17 @@ export function SavedInspectionListItem({ inspection, index }) {
   const scoreLabel =
     inspection.cache.score != null && rate >= 60 ? `${inspection.cache.score}점` : '점검 중';
   const isCurrent = currentInspection?.id === inspection.id;
+  const isDraft = !inspection.ui.onboardingComplete;
+
+  // 온보딩 완료 기록은 체크리스트 화면으로, 중단된 드래프트는 멈춘 온보딩 단계로 이동한다.
+  const handleOpen = () => {
+    loadInspection(inspection.id);
+    if (inspection.ui.onboardingComplete) {
+      navigate(`/checklist/${inspection.id}`);
+    } else {
+      navigate(onboardingStepRoute(inspection.ui.onboardingStep));
+    }
+  };
 
   const handleDelete = (event) => {
     event.stopPropagation();
@@ -28,9 +42,10 @@ export function SavedInspectionListItem({ inspection, index }) {
 
   return (
     <li className={cx(styles.item, isCurrent && styles.current)}>
-      <button type="button" className={styles.main} onClick={() => loadInspection(inspection.id)}>
+      <button type="button" className={styles.main} onClick={handleOpen}>
         <p className={styles.name}>
           {name} <span className={styles.score}>{scoreLabel}</span>
+          {isDraft && <span className={styles.draftBadge}>이어서 입력하기</span>}
         </p>
         <p className={styles.address}>{addressLine}</p>
         <p className={styles.meta}>

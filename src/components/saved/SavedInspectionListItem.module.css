@@ -38,6 +38,18 @@
   color: var(--color-text-muted);
 }
 
+/* 온보딩 미완료(중단된) 드래프트 표시 배지 — 완료된 기록과 시각적으로 구분되도록
+   accent 계열로 채워 "계속 진행할 작업"임을 눈에 띄게 한다. */
+.draftBadge {
+  flex-shrink: 0;
+  padding: 2px var(--space-2);
+  border-radius: var(--radius-full);
+  background: var(--accent);
+  color: var(--accent-text);
+  font-size: var(--font-size-xs);
+  font-weight: 700;
+}
+
 .address {
   font-size: var(--font-size-sm);
   color: var(--color-text-muted);

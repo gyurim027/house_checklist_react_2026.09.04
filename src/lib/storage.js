@@ -64,6 +64,7 @@ export function buildInspectionRecord(overrides) {
       optionalExpanded: [],
       resultRevealed: false,
       onboardingComplete: false,
+      onboardingStep: 1,
     },
     createdAt: now,
     updatedAt: now,
