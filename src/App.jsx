@@ -1,12 +1,13 @@
+import { RouterProvider } from 'react-router-dom';
 import { InspectionStoreProvider } from './context/InspectionStoreContext.jsx';
 import { UiFeedbackProvider } from './context/UiFeedbackContext.jsx';
-import { AppShell } from './components/layout/AppShell.jsx';
+import { router } from './router.jsx';
 
 function App() {
   return (
     <InspectionStoreProvider>
       <UiFeedbackProvider>
-        <AppShell />
+        <RouterProvider router={router} />
       </UiFeedbackProvider>
     </InspectionStoreProvider>
   );
