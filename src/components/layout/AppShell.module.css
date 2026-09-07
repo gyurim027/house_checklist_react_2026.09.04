@@ -9,5 +9,7 @@
   width: 100%;
   max-width: var(--content-max-width);
   margin: 0 auto;
-  padding-bottom: var(--space-8);
+  /* 하단 고정 NavBar(--nav-height, NavBar.module.css 참고)에 콘텐츠가 가리지 않도록
+     그만큼 더 여백을 둔다. */
+  padding-bottom: calc(var(--nav-height) + var(--space-8));
 }

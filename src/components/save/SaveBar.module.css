@@ -1,6 +1,8 @@
 .bar {
   position: sticky;
-  bottom: 0;
+  /* Task 19: AppShell에 하단 고정 NavBar(--nav-height)가 생기면서 bottom:0으로
+     붙이면 그 NavBar(z-index 10) 아래 가려진다 — NavBar 바로 위에 붙도록 오프셋. */
+  bottom: var(--nav-height);
   display: flex;
   align-items: center;
   justify-content: flex-end;

@@ -127,4 +127,9 @@
   /* ---------- 레이아웃 ---------- */
   --content-max-width: 720px;
   --touch-target: 44px;
+  /* 하단 고정 NavBar 높이(Task 19, NavBar.module.css) = --touch-target(44px) +
+     위아래 --space-2(8px) 패딩. AppShell의 .main padding-bottom과 InspectionView
+     내부 SaveBar의 sticky bottom 오프셋이 이 값을 함께 참조해 NavBar에 콘텐츠/저장바가
+     가리지 않게 맞춘다. */
+  --nav-height: 60px;
 }

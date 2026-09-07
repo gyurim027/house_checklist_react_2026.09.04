@@ -1,7 +1,9 @@
 .toast {
   position: fixed;
   left: 50%;
-  bottom: var(--space-6);
+  /* Task 19: Toast는 항상 AppShell(하단 고정 NavBar 포함) 안에서만 렌더되므로,
+     NavBar 위에 뜨도록 --nav-height만큼 더 띄운다. */
+  bottom: calc(var(--nav-height) + var(--space-4));
   transform: translateX(-50%);
   max-width: calc(100% - var(--space-6) * 2);
   padding: var(--space-3) var(--space-5);

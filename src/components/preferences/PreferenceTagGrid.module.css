@@ -1,0 +1,25 @@
+.grid {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-3);
+}
+
+/* 칩 스펙(Task 15 토큰): radius-full, 미선택 = 무채색 아웃라인, 선택 = accent 채움.
+   great/status 파란색이나 severity 코랄/레드는 여기서 쓰지 않는다 — 선호 태그는
+   상태/심각도 의미가 아니므로 accent(Near-Black) 계열만 사용. */
+.chip {
+  min-height: var(--touch-target);
+  padding: 0 var(--space-4);
+  border-radius: var(--radius-full);
+  border: 1px solid var(--color-border-strong);
+  background: var(--color-surface);
+  color: var(--color-text);
+  font-size: var(--font-size-sm);
+  font-weight: 600;
+}
+
+.chip.active {
+  border-color: var(--accent);
+  background: var(--accent);
+  color: var(--accent-text);
+}
