@@ -108,7 +108,7 @@
   flex-shrink: 0;
   min-height: var(--touch-target);
   padding: 0 var(--space-4);
-  border-radius: var(--radius-sm);
+  border-radius: var(--radius-full);
   background: var(--accent);
   color: var(--accent-text);
   font-size: var(--font-size-sm);

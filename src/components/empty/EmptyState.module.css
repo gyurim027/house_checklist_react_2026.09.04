@@ -22,7 +22,7 @@
   margin-top: var(--space-6);
   min-height: var(--touch-target);
   padding: 0 var(--space-6);
-  border-radius: var(--radius-md);
+  border-radius: var(--radius-full);
   background: var(--accent);
   color: var(--accent-text);
   font-size: var(--font-size-md);
