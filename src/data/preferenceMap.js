@@ -9,12 +9,14 @@
 // 실제 정의(CATEGORIES/ITEMS/QUESTIONS)와 대조 확인했다.
 //
 // categoryIds에 적힌 "(전체)"는 그 카테고리 전체를 가리킨다는 뜻(예: noise/E_noise —
-// 이 카테고리엔 별도 itemIds가 없다). "(부분)"은 카테고리 중 일부만 관련 있다는
-// 뜻이며, 실제 대상은 itemIds로 별도 명시된다(예: locationTransit/B_parking_around —
-// transit_walk·slope_stairs 두 문항만 해당, B의 나머지 문항인 parking_space·
-// parking_access·night_route는 다른 태그(parking/security) 소관). 브리프 표의 셀
-// 값은 그대로 옮기되, 이 주석으로 (전체)/(부분) 의미만 기록해 Task 20 구현자가
-// 카테고리 전체 하이라이트 여부를 판단할 근거를 남긴다.
+// 이 카테고리엔 별도 itemIds가 없다). 브리프 표의 셀 값은 그대로 옮기되, 이 주석으로
+// (전체) 의미만 기록해 Task 20 구현자가 카테고리 전체 하이라이트 여부를 판단할
+// 근거를 남긴다.
+//
+// (Task 19 리비전) locationTransit은 원래 categoryIds: ['B_parking_around'](부분)로
+// 잘못 매핑돼 있었다 — B_parking_around 카테고리 전체(5문항: transit_walk·
+// slope_stairs·parking_space·parking_access·night_route)를 가리키는 것으로 오인될
+// 여지가 있었기 때문에, 의도했던 두 문항만 itemIds로 명시하고 categoryIds는 비웠다.
 
 export const PREFERENCE_TAGS = [
   { id: 'price', label: '가격' },
@@ -59,7 +61,7 @@ export const PREFERENCE_MAPPING = {
     visitFields: ['dealType', 'decision.needsNegotiation', 'decision.negotiationMemo'],
   },
   locationTransit: {
-    categoryIds: ['B_parking_around'], // 부분 — 실제 대상은 itemIds 참고
+    categoryIds: [],
     itemIds: ['transit_walk', 'slope_stairs'],
     questionIds: [],
     visitFields: [],
@@ -74,7 +76,7 @@ export const PREFERENCE_MAPPING = {
     categoryIds: [],
     itemIds: ['furniture_space', 'closet_size', 'kitchen_space'],
     questionIds: [],
-    visitFields: [],
+    visitFields: ['areaPyeong'],
   },
   daylight: {
     categoryIds: [],
