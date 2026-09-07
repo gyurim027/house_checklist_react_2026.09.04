@@ -28,20 +28,41 @@
   color: var(--color-text-muted);
 }
 
+/* 카카오 로그인 버튼 — 카카오 공식 디자인 가이드 고정값 적용
+   (https://developers.kakao.com/docs/ko/kakaologin/design-guide).
+   이 앱의 --accent/--radius-full 등 자체 토큰은 이 버튼에 적용하지 않는다:
+   컨테이너 배경 #FEE500, 심볼/레이블 검정, 모서리 반경 12px은 정책상 고정값이며
+   협상 불가. hover/active만 같은 노랑 계열의 살짝 어두운 색조를 사용한다. */
 .kakaoBtn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: var(--space-2);
   min-height: var(--touch-target);
   padding: 0 var(--space-6);
-  border-radius: var(--radius-full);
-  background: var(--accent);
-  color: var(--accent-text);
-  font-size: var(--font-size-md);
-  font-weight: 700;
+  border-radius: 12px;
+  background: #fee500;
 }
 
 .kakaoBtn:hover {
-  background: var(--accent-hover);
+  background: #fada00;
 }
 
 .kakaoBtn:active {
-  background: var(--accent-pressed);
+  background: #f2ce00;
+}
+
+.kakaoSymbol {
+  width: 18px;
+  height: 15px;
+  flex-shrink: 0;
+}
+
+/* 레이블 높이는 버튼 전체 높이(--touch-target, 44px)의 1/3(~14.7px)을 넘지 않아야 한다.
+   font-size-sm(13px) + line-height 1로 실측 높이를 13px로 고정해 여유를 둔다. */
+.kakaoLabel {
+  font-size: var(--font-size-sm);
+  line-height: 1;
+  font-weight: 500;
+  color: rgb(0 0 0 / 85%);
 }
