@@ -72,6 +72,22 @@ export function buildInspectionRecord(overrides) {
   return Object.assign(base, overrides || {});
 }
 
+// F-034: "새로고침 후에도 내용은 유지하고, 접힘 상태는 유지하지 않는다" — 로드 시 각
+// inspection의 카테고리/더보기 펼침 상태만 기본값으로 되돌린다. ui 객체의 다른 필드
+// (resultRevealed/onboardingComplete/onboardingStep)는 절대 건드리지 않는다 — 이 리셋
+// 로직을 expandedCategories/optionalExpanded 두 필드에만 명시적으로 한정한다.
+function resetTransientUiState(inspection) {
+  if (!inspection || !inspection.ui) return inspection;
+  return {
+    ...inspection,
+    ui: {
+      ...inspection.ui,
+      expandedCategories: ['A_exterior_common'],
+      optionalExpanded: [],
+    },
+  };
+}
+
 // localStorage에서 스토어를 읽는다. 데이터가 없거나 파싱/형태 검증에 실패하면 빈 스토어를 반환한다.
 export function readStoreFromLocalStorage() {
   const emptyStore = { schemaVersion: 2, inspections: [], currentInspectionId: null };
@@ -82,7 +98,7 @@ export function readStoreFromLocalStorage() {
     if (!parsed || !Array.isArray(parsed.inspections)) return emptyStore;
     return {
       schemaVersion: 2,
-      inspections: parsed.inspections,
+      inspections: parsed.inspections.map(resetTransientUiState),
       currentInspectionId: parsed.currentInspectionId ?? null,
     };
   } catch {

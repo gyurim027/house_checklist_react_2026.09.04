@@ -139,7 +139,7 @@ export const QUESTIONS = [
 // ---------- 최종 판단 3지선다 ----------
 
 export const DECISIONS = [
-  { id: 'proceed', label: '계약을 진행한다' },
+  { id: 'proceed', label: '계약을 고려한다' },
   { id: 'hold', label: '보류한다' },
   { id: 'reject', label: '포기한다' }
 ];

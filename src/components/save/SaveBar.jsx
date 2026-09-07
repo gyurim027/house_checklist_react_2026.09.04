@@ -4,7 +4,8 @@ import styles from './SaveBar.module.css';
 
 // Task 4: 저장 상태 텍스트 + 수동 저장 버튼.
 // Task 12: 완료 배너(확인율/점수·등급)와 결과 복사 버튼을 제거해 저장 상태 텍스트 +
-// "저장" 버튼만 남긴다. 결과 복사 버튼은 InspectionView 최하단으로 이동했다(CopyResultsButton).
+// "저장" 버튼만 남긴다.
+// Task 18(F-036): 결과 복사 기능(CopyResultsButton) 자체를 완전 삭제했다.
 const SAVE_STATUS_TEXT = {
   idle: '',
   saving: '저장 중...',
